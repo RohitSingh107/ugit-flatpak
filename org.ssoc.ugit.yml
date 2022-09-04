@@ -1,0 +1,42 @@
+app-id: org.ssoc.ugit
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: ugit
+finish-args:
+  - --filesystem=home
+modules:
+  - name: fzf
+    buildsystem: simple
+    build-commands: 
+      - install -D fzf /app/bin/fzf
+
+    sources:
+      - type: file
+        path: fzf
+
+  - name: git
+    buildsystem: simple
+    build-commands:
+      - echo ${FLATPAK_DEST}
+      - install -Dm755 $(which git) ${FLATPAK_DEST}/bin/
+      - install -Dm755 $(which git-cvsserver) ${FLATPAK_DEST}/bin/
+      - install -Dm755 $(which git-receive-pack) ${FLATPAK_DEST}/bin/
+      - install -Dm755 $(which git-shell) ${FLATPAK_DEST}/bin/
+      - install -Dm755 $(which git-upload-archive) ${FLATPAK_DEST}/bin/
+      - install -Dm755 $(which git-upload-pack) ${FLATPAK_DEST}/bin/         
+
+  # - name: ugit
+  #   buildsystem: simple
+  #   build-commands: 
+  #     - install -D ugit /app/bin/ugit
+  #   sources:
+  #     - type: archive
+ 
+  - name: ugit
+    buildsystem: simple
+    build-commands: 
+      - install -D ugit /app/bin/ugit
+    sources:
+      - type: file
+        path: ugit
