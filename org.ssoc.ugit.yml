@@ -5,6 +5,7 @@ sdk: org.freedesktop.Sdk
 command: ugit
 finish-args:
   - --filesystem=home:rw
+  - --share=network
 modules:
   - name: fzf
     buildsystem: simple
