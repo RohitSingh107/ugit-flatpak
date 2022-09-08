@@ -32,12 +32,9 @@ modules:
   - name: ugit
     buildsystem: simple
     build-options:
-      build-args:
-        - --share=network
     build-commands:
-      - curl -fsSL https://raw.githubusercontent.com/Bhupesh-V/ugit/master/ugit -o ugit
       - chmod +x ugit
       - install -Dm755 ugit ${FLATPAK_DEST}/bin/ugit
-    # sources:
-    #   - type: file
-    #     url: https://github.com/Bhupesh-V/ugit/releases/download/v5.3/ugit
+    sources:
+      - type: git
+        url: https://github.com/Bhupesh-V/ugit
