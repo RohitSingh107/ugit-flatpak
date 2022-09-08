@@ -9,17 +9,13 @@ finish-args:
 modules:
   - name: fzf
     buildsystem: simple
-    build-options:
-      build-args:
-        - --share=network
     build-commands: 
-      - wget https://github.com/junegunn/fzf/releases/download/0.33.0/fzf-0.33.0-linux_amd64.tar.gz
       - tar -xvf fzf-0.33.0-linux_amd64.tar.gz
       - install -Dm755 fzf ${FLATPAK_DEST}/bin/fzf
-    # sources:
-    #   - type: archive
-    #     url: https://github.com/junegunn/fzf/releases/download/0.33.0/fzf-0.33.0-linux_amd64.tar.gz
-    #     sha256: bcf2f4ba957cce15cea1546f48cdd3bfe9b5dc9a6e80ccc400314bda171466f3
+    sources:
+      - type: file
+        url: https://github.com/junegunn/fzf/releases/download/0.33.0/fzf-0.33.0-linux_amd64.tar.gz
+        sha256: bcf2f4ba957cce15cea1546f48cdd3bfe9b5dc9a6e80ccc400314bda171466f3
 
   - name: git
     buildsystem: simple
