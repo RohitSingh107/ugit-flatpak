@@ -20,7 +20,6 @@ modules:
   - name: git
     buildsystem: simple
     build-commands:
-      - echo ${FLATPAK_DEST}
       - install -Dm755 $(which git) ${FLATPAK_DEST}/bin/
       - install -Dm755 $(which git-cvsserver) ${FLATPAK_DEST}/bin/
       - install -Dm755 $(which git-receive-pack) ${FLATPAK_DEST}/bin/
@@ -35,6 +34,12 @@ modules:
     build-commands:
       - chmod +x ugit
       - install -Dm755 ugit ${FLATPAK_DEST}/bin/ugit
+      - install -Dm755 org.ssoc.ugit.desktop ${FLATPAK_DEST}/share/applications/org.ssoc.ugit.desktop
     sources:
       - type: git
         url: https://github.com/Bhupesh-V/ugit
+        tag: v5.3
+        commit: 14da50780e696e758bf362489496b74901f84cc1
+
+      - type: file
+        path: org.ssoc.ugit.desktop
